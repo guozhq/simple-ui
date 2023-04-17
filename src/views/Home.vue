@@ -1,11 +1,5 @@
 <template>
-  <div class="top_nav">
-    <div class="logo">Simple UI</div>
-    <ul>
-      <li>菜单1</li>
-      <li>菜单2</li>
-    </ul>
-  </div>
+  <TopNav />
   <div class="banner">
     <h1>Simple UI</h1>
     <h2>一个简单的UI框架</h2>
@@ -15,6 +9,12 @@
     </p>
   </div>
 </template>
+<script lang="ts">
+import TopNav from '../components/TopNav.vue'
+export default {
+  components: { TopNav }
+}
+</script>
 <style lang="scss" scoped>
 .top_nav {
   background: #ccccff;
