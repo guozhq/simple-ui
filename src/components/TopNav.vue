@@ -1,11 +1,13 @@
 <template>
   <div class="top_nav">
+    <svg class="toggleAside" @click="toggleAside">
+      <use xlink:href="#icon-menu"></use>
+    </svg>
     <div class="logo">Simple UI</div>
     <ul>
       <li>菜单1</li>
       <li>菜单2</li>
     </ul>
-    <div @click="toggleAside">logo</div>
   </div>
 </template>
 <script lang="ts">
@@ -37,6 +39,16 @@ export default {
 
     li {
       margin: 0 1em;
+    }
+  }
+
+  @media (max-width:500px) {
+    .logo {
+      display: none;
+    }
+
+    .toggleAside {
+      display: inline-block;
     }
   }
 }
