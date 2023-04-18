@@ -41,15 +41,21 @@ export default {
       margin: 0 1em;
     }
   }
+}
 
-  @media (max-width:500px) {
-    .logo {
-      display: none;
-    }
+.toggleAside {
+  width: 24px;
+  height: 24px;
+  display: none;
+}
 
-    .toggleAside {
-      display: inline-block;
-    }
+@media (max-width:500px) {
+  .logo {
+    display: none;
+  }
+
+  .toggleAside {
+    display: inline-block;
   }
 }
 </style>

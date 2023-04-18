@@ -4,12 +4,15 @@
     <aside v-if="asideVisible">
       <h1>组件列表</h1>
       <ul>
-        <li>Switch组件</li>
-        <li>Button组件</li>
-        <li>DigLog组件</li>
-        <li>Tags组件</li>
+        <li><router-link to="/doc/switch">Switch组件</router-link></li>
+        <li><router-link to="/doc/button">Button组件</router-link></li>
+        <li><router-link to="/doc/Dialog">DigLog组件</router-link></li>
+        <li><router-link to="/doc/tabs">Tags组件</router-link></li>
       </ul>
     </aside>
+    <main>
+      <router-view />
+    </main>
   </div>
 </template>
 <script lang="ts">
@@ -25,7 +28,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 aside {
-  background: black;
+  background: #ccc;
   width: 280px;
 }
 </style>
