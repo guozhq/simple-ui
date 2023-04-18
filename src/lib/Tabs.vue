@@ -7,7 +7,7 @@
       <div class="simple-tabs-nav-indicator" ref="indicator"></div>
     </div>
     <div class="simple-tabs-content">
-      <component :is="current" :key="current.props.title" />
+      <component :is="current" :key="current?.props!.title" />
     </div>
   </div>
 </template>

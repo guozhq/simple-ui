@@ -243,6 +243,7 @@ $disabled-background: #f5f5f5;
     &[disabled] {
       color: $grey;
       border-color: transparent;
+      background: none;
 
       &:hover,
       &:focus {
