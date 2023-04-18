@@ -26,7 +26,7 @@ export default {
 .top_nav {
   background: #ccccff;
   display: flex;
-  max-width: 100%;
+  min-width: 100%;
   padding: 16px;
   justify-content: space-between;
 

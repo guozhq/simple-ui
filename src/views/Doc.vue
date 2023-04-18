@@ -27,8 +27,14 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.layout {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 aside {
   background: #ccc;
   width: 280px;
+  margin-right: 20px;
 }
 </style>
