@@ -21,7 +21,7 @@ import Button from '../lib/Button.vue'
 export default {
   components: { Dialog, Button },
   setup() {
-    const x = ref(true)
+    const x = ref(false)
     const toggle = () => {
       x.value = !x.value
     }
