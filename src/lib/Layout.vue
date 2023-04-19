@@ -7,7 +7,7 @@
 .simple-layout {
   display: flex;
   flex-wrap: wrap;
-  width: 100vh;
+  width: 100%;
   flex: 1;
 }
 </style>

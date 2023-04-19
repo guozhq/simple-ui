@@ -1,18 +1,18 @@
 <template>
-  Switch组件
-  <h1>示例1</h1>
-  <Switch v-model:value="bool" />
-  <h2>支持Disabled</h2>
-  <Switch v-model:value="bool" disabled />
+  <Demo :component="Switch1Demo" />
+  <Demo :component="Switch2Demo" />
 </template>
 <script lang='ts'>
-import Switch from '../lib/Switch.vue'
-import { ref } from 'vue'
+import Switch1Demo from './Switch1.demo.vue'
+import Switch2Demo from './Switch2.demo.vue'
+import Demo from './Demo.vue'
 export default {
-  components: { Switch },
+  components: { Demo },
   setup() {
-    const bool = ref(true)
-    return { bool }
+    return {
+      Switch1Demo,
+      Switch2Demo
+    }
   }
 }
 </script>

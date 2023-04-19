@@ -24,11 +24,15 @@ export default {
 </script>
 <style lang="scss" scoped>
 .top_nav {
-  background: #ccccff;
+  background: #ffffff;
   display: flex;
   min-width: 100%;
-  padding: 16px;
+  max-height: 55px;
   justify-content: space-between;
+  z-index: 12;
+  position: fixed;
+  color: #213547;
+  border-bottom: 1px solid #e7e7e7;
 
   .logo {
     max-width: 6em;

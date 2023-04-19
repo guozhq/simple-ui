@@ -1,45 +1,23 @@
 <template>
-  <h1> 示例1 </h1>
-  <Layout>
-    <Header>header</Header>
-    <Content>Content</Content>
-    <Footer>Footer</Footer>
-  </Layout>
-  <h1> 示例2 </h1>
-  <Layout>
-    <Header>header</Header>
-    <Layout>
-      <Sider>Sider</Sider>
-      <Content>Content</Content>
-    </Layout>
-    <Footer>Footer</Footer>
-  </Layout>
-  <h1> 示例3 </h1>
-  <Layout>
-    <Header>header</Header>
-    <Layout>
-      <Content>Content</Content>
-      <Sider>Sider</Sider>
-    </Layout>
-    <Footer>Footer</Footer>
-  </Layout>
-  <h1> 示例4 </h1>
-  <Layout>
-    <Sider>Sider</Sider>
-    <Layout>
-      <Header>header</Header>
-      <Content>Content</Content>
-      <Footer>Footer</Footer>
-    </Layout>
-  </Layout>
+  <Demo :component="Layout1Demo" />
+  <Demo :component="Layout2Demo" />
+  <Demo :component="Layout3Demo" />
+  <Demo :component="Layout4Demo" />
+  <Demo :component="Layout5Demo" />
 </template>
 <script lang="ts">
-import Layout from '../lib/Layout.vue'
-import Header from '../lib/Header.vue'
-import Content from '../lib/Content.vue'
-import Sider from '../lib/Sider.vue'
-import Footer from '../lib/Footer.vue'
+import Demo from './Demo.vue'
+import Layout1Demo from './Layout1.demo.vue';
+import Layout2Demo from './Layout2.demo.vue';
+import Layout3Demo from './Layout3.demo.vue';
+import Layout4Demo from './Layout4.demo.vue';
+import Layout5Demo from './Layout5.demo.vue';
 export default {
-  components: { Layout, Header, Content, Sider, Footer }
+  components: { Demo },
+  setup() {
+    return {
+      Layout1Demo, Layout2Demo, Layout3Demo, Layout4Demo, Layout5Demo
+    }
+  }
 }
 </script>
