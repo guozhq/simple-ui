@@ -3,10 +3,14 @@
     <svg class="toggleAside" @click="toggleAside">
       <use xlink:href="#icon-menu"></use>
     </svg>
-    <div class="logo">Simple UI</div>
+    <router-link to="/" class="logo">
+      <svg class="icon">
+        <use xlink:href="#icon-tiger"></use>
+      </svg>
+      Simple UI
+    </router-link>
     <ul>
-      <li>菜单1</li>
-      <li>菜单2</li>
+      <li>文档</li>
     </ul>
   </div>
 </template>
@@ -24,18 +28,28 @@ export default {
 </script>
 <style lang="scss" scoped>
 .top_nav {
-  background: #ffffff;
   display: flex;
-  min-width: 100%;
+  width: 100%;
   max-height: 55px;
   justify-content: space-between;
-  z-index: 12;
+  z-index: 11;
   position: fixed;
-  color: #213547;
-  border-bottom: 1px solid #e7e7e7;
+  color: #fff;
+  padding: 16px;
+
 
   .logo {
-    max-width: 6em;
+    max-width: 7em;
+    display: flex;
+    align-items: center;
+
+
+    >svg {
+      color: #213547;
+      width: 32px;
+      height: 32px;
+      margin-right: 8px;
+    }
   }
 
   .menu {

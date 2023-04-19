@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <TopNav />
+    <TopNav style="color: #213547;background: #ffffff;box-shadow: 3px 1px 5px 1px #e7e7e7;" />
     <aside v-if="asideVisible">
       <h2>文档</h2>
       <ol>
@@ -54,17 +54,18 @@ aside {
   flex: 0 0 200px;
   position: fixed;
   border-right: 1px solid #e7e7e7;
+  box-shadow: 3px 1px 5px 1px #e7e7e7;
 
   >h2 {
     margin-bottom: 4px;
-    padding: 0 16px;
+    padding: 0 32px;
   }
 
   >ol {
     >li {
       a {
         display: block;
-        padding: 4px 16px;
+        padding: 4px 32px;
       }
 
       .router-link-active {
@@ -77,7 +78,7 @@ aside {
 }
 
 main {
-  padding: 64px 96px 96px 96px;
+  padding: 70px 96px 96px 96px;
   margin-left: 200px;
   min-height: 120;
   flex: 1;
