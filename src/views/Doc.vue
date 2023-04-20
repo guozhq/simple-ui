@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <TopNav style="color: #213547;background: #ffffff;box-shadow: 1px 1px 5px 1px #e7e7e7;" />
+    <TopNav class="top_nav" :toggleMenuButtonVisible="true" />
     <aside v-if="asideVisible">
       <h2>文档</h2>
       <ol>
@@ -29,15 +29,32 @@
       </div>
     </main>
   </div>
+  <div class="overlay" v-show="asideVisible && isLargeScreen" @click="toggleAside"></div>
 </template>
 <script lang="ts">
 import TopNav from '../components/TopNav.vue'
-import { inject, Ref } from 'vue'
+import { inject, onMounted, onUnmounted, Ref, ref } from 'vue'
 export default {
   components: { TopNav },
   setup() {
+    const screenWidth = ref(window.innerWidth)
     const asideVisible = inject<Ref<boolean>>('asideVisible')
-    return { asideVisible }
+    const isLargeScreen = ref(false)
+    const toggleAside = () => { asideVisible!.value = !asideVisible!.value }
+    const handleResize = () => {
+      screenWidth.value = window.innerWidth
+      asideVisible!.value = screenWidth.value > 500
+      isLargeScreen.value = screenWidth.value <= 500
+    }
+    onMounted(() => {
+      window.addEventListener('resize', handleResize)
+      isLargeScreen.value = screenWidth.value <= 500
+    })
+
+    onUnmounted(() => {
+      window.removeEventListener('resize', handleResize)
+    })
+    return { asideVisible, toggleAside, isLargeScreen }
   }
 }
 </script>
@@ -46,6 +63,12 @@ export default {
   display: flex;
   flex-wrap: wrap;
   background: #f5f8fa;
+
+  .top_nav {
+    color: #213547;
+    background: #ffffff;
+    box-shadow: 1px 1px 5px 1px #e7e7e7;
+  }
 }
 
 aside {
@@ -56,8 +79,7 @@ aside {
   text-align: left;
   flex: 0 0 200px;
   position: fixed;
-  // border-right: 1px solid #e7e7e7;
-  // box-shadow: 1px 1px 5px 1px #e7e7e7;
+  z-index: 10;
 
   >h2 {
     margin-bottom: 4px;
@@ -93,5 +115,21 @@ main {
     padding: 24px;
     box-shadow: 1px 1px 5px 1px #e7e7e7;
   }
+}
+
+@media (max-width:500px) {
+  main {
+    padding: 55px 0 0 0;
+    margin: 0;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.12);
 }
 </style>
