@@ -1,9 +1,9 @@
 <template>
   <div class="simple-tabs">
     <div class="simple-tabs-nav" ref="container">
-      <div class="simple-tabs-nav-item" v-for="(t, index) in titles"
-        :ref="(el: HTMLDivElement) => { if (t === selected) selectedItem = el }" @click="select(t)"
-        :class="{ selected: t === selected }" :key="index">{{ t }}</div>
+      <div class="simple-tabs-nav-item" @click="select(t)" :class="{ selected: t === selected }"
+        v-for="(t, index) in titles" :ref="el => { if (t === selected) selectedItem = el }" :key="index">{{ t }}
+      </div>
       <div class="simple-tabs-nav-indicator" ref="indicator"></div>
     </div>
     <div class="simple-tabs-content">
@@ -12,57 +12,56 @@
   </div>
 </template>
 
-<script lang="ts" setup="props, context">
+<script lang="ts">
 import Tab from './Tab.vue'
 import {
   computed,
   ref,
   watchEffect,
-  onMounted,
-  useSlots
+  Component,
 } from 'vue'
-import type { Component } from 'vue'
-const props = defineProps<{ selected: string }>()
-const emit = defineEmits<{
-  (e: 'update:selected', title: string): void;
-}>()
-const selectedItem = ref<HTMLDivElement>()
-const indicator = ref<HTMLDivElement>()
-const container = ref<HTMLDivElement>()
-onMounted(() => {
-  watchEffect(() => {
-    const {
-      width
-    } = selectedItem.value!.getBoundingClientRect()
-    indicator.value!.style.width = width + 'px'
-    const {
-      left: left1
-    } = container.value!.getBoundingClientRect()
-    const {
-      left: left2
-    } = selectedItem.value!.getBoundingClientRect()
-    const left = left2 - left1
-    indicator.value!.style.left = left + 'px'
-  }, {
-    flush: 'post'
-  })
-})
-const slots = useSlots()
-const defaults = slots.default!()
-defaults.forEach((tag) => {
-  if ((tag.type as Component).name !== Tab.name) {
-    throw new Error('Tabs 子标签必须是 Tab')
+export default {
+  props: {
+    selected: {
+      type: String,
+    }
+  },
+  setup(props, context) {
+    const selectedItem = ref()
+    const indicator = ref<HTMLDivElement>()
+    const container = ref<HTMLDivElement>()
+    watchEffect(() => {
+      if (selectedItem.value && indicator.value && container.value) {
+        const { width } = selectedItem.value.getBoundingClientRect()
+        indicator.value.style.width = width + 'px'
+        const { left: left1 } = container.value.getBoundingClientRect()
+        const { left: left2 } = selectedItem.value.getBoundingClientRect()
+        const left = left2 - left1
+        indicator.value.style.left = left + 'px'
+      }
+    })
+    const defaults = context.slots.default!()
+    defaults.forEach((tag) => {
+      if ((tag.type as Component).name !== Tab.name) {
+        throw new Error('Tabs 子标签必须是 Tab')
+      }
+    })
+    const current = computed(() => {
+      return defaults.find(tag => tag.props!.title === props.selected)
+    })
+    const titles = defaults.map((tag) => {
+      return tag.props!.title
+    })
+    const select = (title: string) => {
+      context.emit('update:selected', title)
+    }
+    return {
+      current, titles, select, selectedItem, defaults, indicator,
+      container,
+    }
   }
-})
-const current = computed(() => {
-  return defaults.find(tag => tag.props!.title === props.selected)
-})
-const titles = defaults.map((tag) => {
-  return tag.props!.title
-})
-const select = (title: string) => {
-  emit('update:selected', title)
 }
+
 </script>
 
 <style lang="scss">

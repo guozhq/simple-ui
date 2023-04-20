@@ -7,3 +7,4 @@ git commit -m 'update' &&
 git branch -M master &&
 git remote add origin git@gitee.com:guozhq/Simple-UI.git &&
 git push -u origin "master" &&
+cd -
