@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <TopNav style="color: #213547;background: #ffffff;box-shadow: 3px 1px 5px 1px #e7e7e7;" />
+    <TopNav style="color: #213547;background: #ffffff;box-shadow: 1px 1px 5px 1px #e7e7e7;" />
     <aside v-if="asideVisible">
       <h2>文档</h2>
       <ol>
@@ -24,7 +24,9 @@
       </ol>
     </aside>
     <main>
-      <router-view />
+      <div class="content">
+        <router-view />
+      </div>
     </main>
   </div>
 </template>
@@ -43,18 +45,19 @@ export default {
 .layout {
   display: flex;
   flex-wrap: wrap;
+  background: #f5f8fa;
 }
 
 aside {
-  padding-top: 70px;
+  padding-top: 80px;
   background: #ffffff;
   width: 200px;
   min-height: 100vh;
   text-align: left;
   flex: 0 0 200px;
   position: fixed;
-  border-right: 1px solid #e7e7e7;
-  box-shadow: 3px 1px 5px 1px #e7e7e7;
+  // border-right: 1px solid #e7e7e7;
+  // box-shadow: 1px 1px 5px 1px #e7e7e7;
 
   >h2 {
     margin-bottom: 4px;
@@ -78,10 +81,17 @@ aside {
 }
 
 main {
-  padding: 70px 96px 96px 96px;
+  padding: 80px 24px 96px 24px;
   margin-left: 200px;
-  min-height: 120;
   flex: 1;
   width: 100%;
+
+  .content {
+    border-radius: 8px;
+    min-height: 100vh;
+    background: #fff;
+    padding: 24px;
+    box-shadow: 1px 1px 5px 1px #e7e7e7;
+  }
 }
 </style>

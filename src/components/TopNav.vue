@@ -10,7 +10,7 @@
       Simple UI
     </router-link>
     <ul>
-      <li>文档</li>
+      <li><router-link to="/doc/intro">文档</router-link></li>
     </ul>
   </div>
 </template>
