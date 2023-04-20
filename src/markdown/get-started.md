@@ -4,10 +4,11 @@
 然后在你的代码中写入下面的代码
 
 ```
-import {Button} from "king-ui"
+// Button组件示例
+import {Button} from "simple-ui"
 ```
 
-就可以使用我提供的组件了。
+就可以使用我提供的Button组件了。
 
 ## Vue 单文件组件
 
@@ -20,7 +21,7 @@ import {Button} from "king-ui"
   </div>
 </template>
 <script>
-import {Button} from "king-ui"
+import {Button} from "simple-ui"
 export default {
   components: {Button}
 }

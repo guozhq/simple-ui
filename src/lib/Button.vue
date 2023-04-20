@@ -1,7 +1,9 @@
 <template>
   <button class="simple-button" :class="classes" :disabled="disabled">
-    <span v-if="loading" class="simple-loadingIndicator"></span>
-    <slot />
+    <div class="simple-loadingIndicator-wrapper">
+      <span v-if="loading" class="simple-loadingIndicator"></span>
+      <slot />
+    </div>
   </button>
 </template>
 <script lang="ts">
@@ -61,9 +63,10 @@ $disabled-background: #f5f5f5;
   border: 1px solid $border-color;
   background: #fff;
   box-shadow: 0 1px 0 fade-out(black, 0.95);
+  margin: 4px;
 
   &+& {
-    margin-left: 8px;
+    margin-left: 2px;
   }
 
   &:hover,
@@ -76,17 +79,25 @@ $disabled-background: #f5f5f5;
     outline: none;
   }
 
-  >.simple-loadingIndicator {
-    width: 14px;
-    height: 14px;
-    display: inline-block;
-    margin-right: 4px;
-    border-radius: 8px;
-    border-color: $blue $blue $blue transparent;
-    border-style: solid;
-    border-width: 2px;
-    animation: simple-spin 1s infinite linear;
+  >.simple-loadingIndicator-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    >.simple-loadingIndicator {
+      width: 16px;
+      height: 16px;
+      display: inline-block;
+      margin-right: 2px;
+      border-radius: 8px;
+      border-color: $blue $blue $blue transparent;
+      border-style: solid;
+      border-width: 2px;
+      animation: simple-spin 1s infinite linear;
+    }
   }
+
+
 
   @keyframes simple-spin {
     0% {

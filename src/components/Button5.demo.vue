@@ -2,6 +2,7 @@
   支持显示加载中
 </i18n>
 <template>
+  <Button loading></Button>
   <Button loading>加载中</Button>
   <Button>加载完成</Button>
 </template>
