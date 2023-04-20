@@ -5,7 +5,7 @@
       <h1>Simple UI</h1>
       <h2>一个简单的UI框架</h2>
       <p class="actions">
-        <a href="https://www.github.com">Github</a>
+        <a href="https://github.com/guozhq/simple-ui">Github</a>
         <router-link to="/doc/intro"> 开始 </router-link>
       </p>
     </div>
