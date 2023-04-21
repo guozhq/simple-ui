@@ -21,10 +21,7 @@ const vueI18nPlugin = {
   },
 }
 export default defineConfig({
-  // base: '/simple-ui',
-  // build: {
-  //   assetsDir
-  // },
+  base: '/simple-ui',
   plugins: [
     vue({
       include: [/\.vue$/, /\.md$/], // <--
